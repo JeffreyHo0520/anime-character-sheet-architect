@@ -11,25 +11,9 @@
 
 ---
 
-## 📸 產出成果展示 (Showcase)
-
-> 以《七龍珠Z》人造人18號（Android 18）為例：
-
-### 1. 【16:9 全視角角色三視圖與表情矩陣母圖】
-*包含正面立姿、側斜 3/4 視角、正側面輪廓、背面視圖，右側 4 款核心表情（冷靜、自信微笑、戰鬥爆氣、嬌羞驚訝），底部附帶標準色票條。*
-
-![Android 18 角色設定三視圖與表情矩陣](./examples/android_18_character_sheet.jpg)
-
-### 2. 【1:1 高解析核心肖像頭像】
-*經典胸前紅黑 RR（紅領巾軍）徽章、黑白斑馬橫條袖、金黃鮑伯髮型與大金耳環特寫，適合做為大頭貼、LINE 貼圖 Tab 標籤圖或商店主圖。*
-
-![Android 18 核心肖像頭像](./examples/android_18_avatar.jpg)
-
----
-
 ## ⚡ 快速安裝（其他電腦一鍵安裝）
 
-只要在任何安裝了 Antigravity、Gemini CLI 或 Claude Code 的電腦終端機中執行下列一行指令，即可直接安裝為全域技能：
+只要在任何安裝了 **Antigravity**、**Gemini CLI** 或 **Claude Code** 的電腦終端機中執行下列一行指令，即可直接安裝為全域技能：
 
 ### 🪟 Windows (PowerShell)
 ```powershell
@@ -54,6 +38,30 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 # macOS / Linux:
 chmod +x ./install.sh && ./install.sh
 ```
+
+---
+
+## 📸 產出成果展示 (Showcase)
+
+### 範例一：《七龍珠Z》布馬 (Bulma)
+*鳥山明經典 90 年代東映賽璐璐手繪風格，水綠波波頭、膠囊公司亮黃上衣、紅領巾、七龍珠雷達與四款經典表情（冷靜自信、甜美微笑、憤怒吶喊、嬌羞嘟嘴）。*
+
+#### 16:9 全方位角色設定母圖 (Turnaround Sheet)
+![Bulma 角色設定三視圖與表情矩陣](./examples/bulma_character_sheet.jpg)
+
+#### 1:1 高解析核心肖像頭像 (Master Avatar)
+![Bulma 核心肖像頭像](./examples/bulma_avatar.jpg)
+
+---
+
+### 範例二：《七龍珠Z》人造人18號 (Android 18)
+*經典黑白斑馬紋袖、RR 紅領巾軍徽章牛仔背心、金黃齊肩短髮、四款表情與標準色票條。*
+
+#### 16:9 全方位角色設定母圖 (Turnaround Sheet)
+![Android 18 角色設定三視圖與表情矩陣](./examples/android_18_character_sheet.jpg)
+
+#### 1:1 高解析核心肖像頭像 (Master Avatar)
+![Android 18 核心肖像頭像](./examples/android_18_avatar.jpg)
 
 ---
 
@@ -105,7 +113,7 @@ flowchart LR
 ```
 
 ### 2. 自然語言對話
-- 「我要創造一個虛擬角色，是《七龍珠Z》18號，請給我這個角色的角色設定圖」
+- 「我要創造一個虛擬角色，是《七龍珠Z》布馬，請給我這個角色的角色設定圖」
 - 「幫我做 [角色名稱] 的角色三視圖與表情矩陣設定集」
 - 「請以 [作品風格] 幫我原創一個 [特徵描述] 的虛擬角色母檔」
 

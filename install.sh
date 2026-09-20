@@ -26,30 +26,37 @@ done
 echo "[1/3] 目標安裝位置: $DEST_BASE"
 mkdir -p "$DEST_BASE"
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL="anime-character-sheet-architect"
-
-echo "[2/3] 正在安裝技能模組..."
-SRC="$SCRIPT_DIR/$SKILL"
-if [ ! -d "$SRC" ]; then
-    if [ -f "$SCRIPT_DIR/SKILL.md" ]; then
-        SRC="$SCRIPT_DIR"
-    else
-        echo "❌ 找不到技能來源目錄: $SRC"
-        exit 1
-    fi
-fi
-
 TARGET="$DEST_BASE/$SKILL"
 
 if [ -d "$TARGET" ]; then
     echo "  -> 覆蓋更新既有版本: $SKILL..."
     rm -rf "$TARGET"
 fi
-
 mkdir -p "$TARGET"
-cp "$SRC/SKILL.md" "$TARGET/SKILL.md"
-echo "  ✓ 成功安裝: $SKILL"
+
+echo "[2/3] 正在安裝技能模組..."
+
+INSTALLED=false
+if [ -n "${BASH_SOURCE[0]}" ] && [ -f "${BASH_SOURCE[0]}" ]; then
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    if [ -f "$SCRIPT_DIR/SKILL.md" ]; then
+        cp "$SCRIPT_DIR/SKILL.md" "$TARGET/SKILL.md"
+        INSTALLED=true
+        echo "  ✓ 從本機來源安裝: $SCRIPT_DIR/SKILL.md"
+    elif [ -f "$SCRIPT_DIR/$SKILL/SKILL.md" ]; then
+        cp "$SCRIPT_DIR/$SKILL/SKILL.md" "$TARGET/SKILL.md"
+        INSTALLED=true
+        echo "  ✓ 從本機來源安裝: $SCRIPT_DIR/$SKILL/SKILL.md"
+    fi
+fi
+
+if [ "$INSTALLED" = false ]; then
+    RAW_URL="https://raw.githubusercontent.com/JeffreyHo0520/anime-character-sheet-architect/main/SKILL.md"
+    echo "  -> 正在從 GitHub 遠端下載最新技能定義: $RAW_URL"
+    curl -fsSL "$RAW_URL" -o "$TARGET/SKILL.md"
+    echo "  ✓ 下載並安裝成功！"
+fi
 
 echo "[3/3] 驗證安裝結果..."
 if [ -f "$TARGET/SKILL.md" ]; then
@@ -61,7 +68,7 @@ if [ -f "$TARGET/SKILL.md" ]; then
     echo "  1. 輸入斜線指令："
     echo "     /anime-character-sheet-architect"
     echo "  2. 或使用自然語言："
-    echo "     「我要創造一個虛擬角色，是《七龍珠Z》18號，請給我這個角色的角色設定圖」"
+    echo "     「我要創造一個虛擬角色，是《七龍珠Z》布馬，請給我這個角色的角色設定圖」"
     echo "     「幫我製作 [角色名稱] 的角色三視圖與表情矩陣設定集」"
     echo "=========================================================="
 else
